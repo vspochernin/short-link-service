@@ -1,15 +1,18 @@
 package ru.vspochernin.short_link_service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import ru.vspochernin.short_link_service.command.CommandLineInterface;
 
 @SpringBootApplication
 public class ShortLinkServiceApplication implements CommandLineRunner {
 
-    @Autowired
-    private CommandLineInterface commandLineInterface;
+    private final CommandLineInterface commandLineInterface;
+
+    public ShortLinkServiceApplication(CommandLineInterface commandLineInterface) {
+        this.commandLineInterface = commandLineInterface;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(ShortLinkServiceApplication.class, args);
