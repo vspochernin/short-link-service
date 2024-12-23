@@ -1,17 +1,22 @@
 package ru.vspochernin.short_link_service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ShortLinkServiceApplication {
+public class ShortLinkServiceApplication implements CommandLineRunner {
 
-    public static void main(String[] args) throws InterruptedException {
+    @Autowired
+    private CommandLineInterface commandLineInterface;
+
+    public static void main(String[] args) {
         SpringApplication.run(ShortLinkServiceApplication.class, args);
-        System.out.println("Hello World!");
-        for (int i = 0; i < 10; i++) {
-            System.out.println("Hello World!" + i);
-            Thread.sleep(300);
-        }
+    }
+
+    @Override
+    public void run(String... args) {
+        commandLineInterface.run();
     }
 }
