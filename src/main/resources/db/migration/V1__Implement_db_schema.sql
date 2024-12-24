@@ -9,6 +9,7 @@ CREATE TABLE links
     user_id             UUID         NOT NULL,
     long_url            VARCHAR(255) NOT NULL,
     short_url           VARCHAR(31)  NOT NULL,
+    current_clicks      INTEGER      NOT NULL,
     max_clicks          INTEGER      NOT NULL,
     expiration_datetime TIMESTAMP    NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
