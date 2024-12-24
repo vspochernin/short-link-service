@@ -21,7 +21,8 @@ public class RegisterCommandHandler implements CommandHandler {
     public void handle(List<String> arguments) {
         System.out.println("Будет произведена регистрация");
         User savedUser = userRepository.save(new User());
-        System.out.println("Регистрация прошла успешно, запишите ваш uuid: " + savedUser.getId());
+        System.out.println(
+                "Регистрация прошла успешно, запишите ваш uuid и используйте его для входа: " + savedUser.getId());
     }
 
     @Override

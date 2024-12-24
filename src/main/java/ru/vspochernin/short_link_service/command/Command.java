@@ -3,7 +3,9 @@ package ru.vspochernin.short_link_service.command;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.UUID;
 
+import ru.vspochernin.short_link_service.context.ShortLinkContext;
 import ru.vspochernin.short_link_service.log.DebugLogger;
 
 public record Command(
@@ -16,7 +18,7 @@ public record Command(
 
     public static Command getNext() {
         System.out.println("------------------------");
-        System.out.print("Введите очередную команду: ");
+        System.out.print("Введите очередную команду [" + getCurrentUserString() + "]: ");
 
         String str = SCANNER.nextLine().trim();
         List<String> strParts = Arrays.stream(str.split(DELIMITER_REGEX))
@@ -33,5 +35,11 @@ public record Command(
         DebugLogger.log("Считалась команда и аргументы: " + commandType + " " + arguments);
 
         return new Command(commandType, arguments);
+    }
+
+    private static String getCurrentUserString() {
+        return ShortLinkContext.currentUser
+                .map(UUID::toString)
+                .orElse("неидентифицирован");
     }
 }
