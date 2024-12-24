@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import ru.vspochernin.short_link_service.context.ShortLinkContext;
 import ru.vspochernin.short_link_service.exception.ShortLinkServiceException;
 import ru.vspochernin.short_link_service.handler.CommandHandler;
+import ru.vspochernin.short_link_service.utils.PrintUtils;
 
 @Service
 public class CommandLineInterface {
@@ -27,7 +28,7 @@ public class CommandLineInterface {
     }
 
     public void run() {
-        printStartMessage();
+        PrintUtils.printHelpMessage();
         while (ShortLinkContext.isRunning) {
             ShortLinkContext.currentCommand = Command.getNext();
             try {
@@ -38,13 +39,5 @@ public class CommandLineInterface {
                 System.out.println("Ошибка: " + e.getMessage());
             }
         }
-    }
-
-    private static void printStartMessage() {
-        System.out.println("""
-                Добрый день! Сервис коротких ссылок поддерживает следующие команды:
-                'register' - регистрация нового uuid,
-                'exit' - выход из программы""");
-
     }
 }

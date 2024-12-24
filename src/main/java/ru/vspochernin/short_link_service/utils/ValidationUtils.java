@@ -11,4 +11,10 @@ public class ValidationUtils {
             throw new ShortLinkServiceException("Команда не поддерживает аргументы");
         }
     }
+
+    public static void validateArgumentsCount(List<String> arguments, int count) {
+        if (arguments.size() != count) {
+            throw new ShortLinkServiceException("Некорректное количество аргументов, ожидается: " + count);
+        }
+    }
 }
