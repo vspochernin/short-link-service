@@ -2,11 +2,11 @@ package ru.vspochernin.short_link_service.handler;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import ru.vspochernin.short_link_service.command.CommandType;
 import ru.vspochernin.short_link_service.exception.ShortLinkServiceException;
 
-@Component
+@Service
 public class UnknownCommandHandler implements CommandHandler {
 
     @Override

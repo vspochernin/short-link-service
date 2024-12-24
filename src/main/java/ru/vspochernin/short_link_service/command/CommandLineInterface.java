@@ -7,12 +7,12 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import ru.vspochernin.short_link_service.context.ShortLinkContext;
 import ru.vspochernin.short_link_service.exception.ShortLinkServiceException;
 import ru.vspochernin.short_link_service.handler.CommandHandler;
 
-@Component
+@Service
 public class CommandLineInterface {
 
     private final Map<CommandType, CommandHandler> commandHandlersMap;
