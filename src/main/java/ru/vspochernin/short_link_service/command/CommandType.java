@@ -1,26 +1,33 @@
 package ru.vspochernin.short_link_service.command;
 
-import java.util.regex.Pattern;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public enum CommandType {
 
-    UNKNOWN("^$"),
-    EXIT("^exit$"),
-    REGISTER("^register$"),
+    UNKNOWN(""),
+    EXIT("exit"),
+    REGISTER("register"),
     ;
 
-    private final String regex;
+    public static final Map<String, CommandType> byCommandTypeStrMap = Arrays.stream(values())
+            .collect(Collectors.toMap(CommandType::getCommandTypeStr, Function.identity()));
 
-    CommandType(String regex) {
-        this.regex = regex;
+    private final String commandTypeStr;
+
+    CommandType(String commandTypeStr) {
+        this.commandTypeStr = commandTypeStr;
     }
 
-    public static CommandType parse(String commandStr) {
-        for (CommandType commandType : values()) {
-            if (Pattern.compile(commandType.regex).matcher(commandStr).find()) {
-                return commandType;
-            }
-        }
-        return UNKNOWN;
+    public String getCommandTypeStr() {
+        return commandTypeStr;
+    }
+
+    public static CommandType parse(String commandTypeStr) {
+        return Optional.ofNullable(byCommandTypeStrMap.get(commandTypeStr))
+                .orElse(UNKNOWN);
     }
 }
