@@ -17,6 +17,7 @@ public enum CommandType {
     EXIT("exit"),
     REGISTER("register"),
     LOGIN("login"),
+    SET_CONFIG_FILE("scf"),
     HELP("help"),
     ;
 
