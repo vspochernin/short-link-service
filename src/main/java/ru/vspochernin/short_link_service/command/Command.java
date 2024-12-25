@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.UUID;
 
 import ru.vspochernin.short_link_service.context.ShortLinkContext;
-import ru.vspochernin.short_link_service.log.DebugLogger;
+import ru.vspochernin.short_link_service.utils.DebugLoggerUtils;
 
 public record Command(
         CommandType commandType,
@@ -32,7 +32,7 @@ public record Command(
                 .skip(1)
                 .toList();
 
-        DebugLogger.log("Считалась команда и аргументы: " + commandType + " " + arguments);
+        DebugLoggerUtils.logIfDebugEnabled("Считалась команда и аргументы: " + commandType + " " + arguments);
 
         return new Command(commandType, arguments);
     }
