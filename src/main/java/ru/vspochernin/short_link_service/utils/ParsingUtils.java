@@ -1,5 +1,7 @@
 package ru.vspochernin.short_link_service.utils;
 
+import java.util.UUID;
+
 import ru.vspochernin.short_link_service.exception.ShortLinkServiceException;
 
 public class ParsingUtils {
@@ -49,6 +51,14 @@ public class ParsingUtils {
             return linkId;
         } catch (Exception e) {
             throw new ShortLinkServiceException("Некорректный id ссылки");
+        }
+    }
+
+    public static UUID parseUuid(String uuidStr) {
+        try {
+            return UUID.fromString(uuidStr);
+        } catch (IllegalArgumentException e) {
+            throw new ShortLinkServiceException("Некорректный UUID");
         }
     }
 }

@@ -39,7 +39,6 @@ public class DeleteCommandHandler implements CommandHandler {
     public void validate(List<String> arguments) {
         ValidationUtils.validateIdentification();
         ValidationUtils.validateArgumentsCount(arguments, 1);
-        ParsingUtils.parseLinkId(arguments.get(0));
     }
 
     @Override

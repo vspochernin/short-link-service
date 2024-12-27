@@ -10,6 +10,7 @@ import ru.vspochernin.short_link_service.context.ShortLinkContext;
 import ru.vspochernin.short_link_service.entity.User;
 import ru.vspochernin.short_link_service.exception.ShortLinkServiceException;
 import ru.vspochernin.short_link_service.repository.UserRepository;
+import ru.vspochernin.short_link_service.utils.ParsingUtils;
 import ru.vspochernin.short_link_service.utils.ValidationUtils;
 
 @Service
@@ -23,7 +24,7 @@ public class LoginCommandHandler implements CommandHandler {
 
     @Override
     public void handle(List<String> arguments) {
-        UUID uuid = UUID.fromString(arguments.get(0));
+        UUID uuid = ParsingUtils.parseUuid(arguments.get(0));
 
         Optional<User> userO = userRepository.findById(uuid);
         userO.orElseThrow(() -> new ShortLinkServiceException("Пользователь " + uuid + " не существует"));
@@ -35,13 +36,6 @@ public class LoginCommandHandler implements CommandHandler {
     @Override
     public void validate(List<String> arguments) {
         ValidationUtils.validateArgumentsCount(arguments, 1);
-
-        String uuidStr = arguments.get(0);
-        try {
-            UUID.fromString(uuidStr);
-        } catch (IllegalArgumentException e) {
-            throw new ShortLinkServiceException("Некорректный UUID: " + uuidStr);
-        }
     }
 
     @Override
