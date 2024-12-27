@@ -22,8 +22,9 @@ public class ConfigValuesUtils {
             properties.load(fis);
 
             return Optional.of(new ConfigValues(
-                    Integer.parseInt(properties.getProperty(MAX_CLICKS_PROPERTY)),
-                    Long.parseLong(properties.getProperty(EXPIRATION_SECONDS_PROPERTY))));
+                    ValidationUtils.validateParseMaxClicks(properties.getProperty(MAX_CLICKS_PROPERTY)),
+                    ValidationUtils.validateParseExpirationSeconds(
+                            properties.getProperty(EXPIRATION_SECONDS_PROPERTY))));
         } catch (Exception e) {
             return Optional.empty();
         }
