@@ -31,6 +31,12 @@ public class ValidationUtils {
         }
     }
 
+    public static void validateShortUrlNotBlank(String shortUtl) {
+        if (shortUtl.isBlank()) {
+            throw new ShortLinkServiceException("Короткая ссылка не должна быть пустой");
+        }
+    }
+
     public static int validateParseMaxClicks(String maxClicksStr) {
         if (maxClicksStr == null || maxClicksStr.isBlank()) {
             throw new ShortLinkServiceException("Максимальное число переходов не должно быть пустым");

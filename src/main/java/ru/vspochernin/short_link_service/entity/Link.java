@@ -37,4 +37,17 @@ public class Link {
     private int currentClicks;
     private int maxClicks;
     private LocalDateTime expirationDatetime;
+
+    public boolean isExpired() {
+        LocalDateTime now = LocalDateTime.now();
+        return now.isAfter(expirationDatetime) || now.isEqual(expirationDatetime);
+    }
+
+    public void incClicks() {
+        currentClicks++;
+    }
+
+    public boolean isClicksSpent() {
+        return currentClicks >= maxClicks;
+    }
 }

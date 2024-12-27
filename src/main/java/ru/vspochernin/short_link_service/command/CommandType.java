@@ -15,6 +15,7 @@ public enum CommandType {
 
     UNKNOWN(""),
     HELP("help"),
+    CLICK("click"),
     REGISTER("register"),
     LOGIN("login"),
     CREATE("create"),
