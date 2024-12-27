@@ -6,7 +6,7 @@ import java.util.Properties;
 
 import ru.vspochernin.short_link_service.entity.ConfigValues;
 
-public class ConfigValuesUtils {
+public class ConfigFileUtils {
 
     private static final String MAX_CLICKS_PROPERTY = "maxClicks";
     private static final String EXPIRATION_SECONDS_PROPERTY = "expirationSeconds";
@@ -22,8 +22,8 @@ public class ConfigValuesUtils {
             properties.load(fis);
 
             return Optional.of(new ConfigValues(
-                    ValidationUtils.validateParseMaxClicks(properties.getProperty(MAX_CLICKS_PROPERTY)),
-                    ValidationUtils.validateParseExpirationSeconds(
+                    ParsingUtils.parseMaxClicks(properties.getProperty(MAX_CLICKS_PROPERTY)),
+                    ParsingUtils.parseExpirationSeconds(
                             properties.getProperty(EXPIRATION_SECONDS_PROPERTY))));
         } catch (Exception e) {
             return Optional.empty();

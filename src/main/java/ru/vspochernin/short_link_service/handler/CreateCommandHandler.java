@@ -10,6 +10,7 @@ import ru.vspochernin.short_link_service.entity.ConfigValues;
 import ru.vspochernin.short_link_service.entity.Link;
 import ru.vspochernin.short_link_service.exception.ShortLinkServiceException;
 import ru.vspochernin.short_link_service.repository.LinkRepository;
+import ru.vspochernin.short_link_service.utils.ParsingUtils;
 import ru.vspochernin.short_link_service.utils.ShortLinkUtils;
 import ru.vspochernin.short_link_service.utils.ValidationUtils;
 
@@ -55,8 +56,8 @@ public class CreateCommandHandler implements CommandHandler {
             currentConfigValues = ShortLinkContext.configFileValues.get();
         } else if (arguments.size() == 3) {
             ValidationUtils.validateLongUrlNotBlank(arguments.get(0));
-            int maxClicks = ValidationUtils.validateParseMaxClicks(arguments.get(1));
-            long expirationSeconds = ValidationUtils.validateParseExpirationSeconds(arguments.get(2));
+            int maxClicks = ParsingUtils.parseMaxClicks(arguments.get(1));
+            long expirationSeconds = ParsingUtils.parseExpirationSeconds(arguments.get(2));
             currentConfigValues = ConfigValues.mergeWithConfigFile(maxClicks, expirationSeconds);
         } else {
             throw new ShortLinkServiceException("Некорректное количество аргументов, ожидается 1 или 3");

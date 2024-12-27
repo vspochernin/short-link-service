@@ -8,7 +8,7 @@ import ru.vspochernin.short_link_service.command.CommandType;
 import ru.vspochernin.short_link_service.context.ShortLinkContext;
 import ru.vspochernin.short_link_service.entity.ConfigValues;
 import ru.vspochernin.short_link_service.exception.ShortLinkServiceException;
-import ru.vspochernin.short_link_service.utils.ConfigValuesUtils;
+import ru.vspochernin.short_link_service.utils.ConfigFileUtils;
 import ru.vspochernin.short_link_service.utils.ValidationUtils;
 
 @Service
@@ -17,7 +17,7 @@ public class SetConfigFileCommandHandler implements CommandHandler {
     @Override
     public void handle(List<String> arguments) {
         Optional<String> configFilePath = Optional.of(arguments.get(0));
-        Optional<ConfigValues> configValues = ConfigValuesUtils.getConfigValuesFromFile(configFilePath);
+        Optional<ConfigValues> configValues = ConfigFileUtils.getConfigValuesFromFile(configFilePath);
 
         if (configValues.isEmpty()) {
             throw new ShortLinkServiceException("Конфигурационный файл отсутствует или составлен некорректно");

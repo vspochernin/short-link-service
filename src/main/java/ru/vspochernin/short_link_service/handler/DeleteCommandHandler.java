@@ -9,6 +9,7 @@ import ru.vspochernin.short_link_service.context.ShortLinkContext;
 import ru.vspochernin.short_link_service.entity.Link;
 import ru.vspochernin.short_link_service.exception.ShortLinkServiceException;
 import ru.vspochernin.short_link_service.repository.LinkRepository;
+import ru.vspochernin.short_link_service.utils.ParsingUtils;
 import ru.vspochernin.short_link_service.utils.ValidationUtils;
 
 @Service
@@ -22,7 +23,7 @@ public class DeleteCommandHandler implements CommandHandler {
 
     @Override
     public void handle(List<String> arguments) {
-        int linkId = ValidationUtils.validateParseLinkId(arguments.get(0));
+        int linkId = ParsingUtils.parseLinkId(arguments.get(0));
 
         Optional<Link> linkO = linkRepository.findById(linkId);
         Link link = linkO.orElseThrow(() -> new ShortLinkServiceException("У вас отсутствует ссылка с таким id"));
@@ -38,7 +39,7 @@ public class DeleteCommandHandler implements CommandHandler {
     public void validate(List<String> arguments) {
         ValidationUtils.validateIdentification();
         ValidationUtils.validateArgumentsCount(arguments, 1);
-        ValidationUtils.validateParseLinkId(arguments.get(0));
+        ParsingUtils.parseLinkId(arguments.get(0));
     }
 
     @Override

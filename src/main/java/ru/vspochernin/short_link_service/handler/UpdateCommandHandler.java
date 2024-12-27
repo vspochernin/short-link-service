@@ -9,6 +9,7 @@ import ru.vspochernin.short_link_service.context.ShortLinkContext;
 import ru.vspochernin.short_link_service.entity.Link;
 import ru.vspochernin.short_link_service.exception.ShortLinkServiceException;
 import ru.vspochernin.short_link_service.repository.LinkRepository;
+import ru.vspochernin.short_link_service.utils.ParsingUtils;
 import ru.vspochernin.short_link_service.utils.ValidationUtils;
 
 @Service
@@ -22,7 +23,7 @@ public class UpdateCommandHandler implements CommandHandler {
 
     @Override
     public void handle(List<String> arguments) {
-        int linkId = ValidationUtils.validateParseLinkId(arguments.get(0));
+        int linkId = ParsingUtils.parseLinkId(arguments.get(0));
 
         Optional<Link> linkO = linkRepository.findById(linkId);
         Link link = linkO.orElseThrow(() -> new ShortLinkServiceException("У вас отсутствует ссылка с таким id"));
@@ -31,7 +32,7 @@ public class UpdateCommandHandler implements CommandHandler {
             throw new ShortLinkServiceException("У вас отсутствует ссылка с таким id");
         }
 
-        int newMaxClicks = ValidationUtils.validateParseMaxClicks(arguments.get(1));
+        int newMaxClicks = ParsingUtils.parseMaxClicks(arguments.get(1));
         link.setMaxClicks(newMaxClicks);
 
         linkRepository.save(link);
@@ -41,8 +42,8 @@ public class UpdateCommandHandler implements CommandHandler {
     public void validate(List<String> arguments) {
         ValidationUtils.validateIdentification();
         ValidationUtils.validateArgumentsCount(arguments, 2);
-        ValidationUtils.validateParseLinkId(arguments.get(0));
-        ValidationUtils.validateParseMaxClicks(arguments.get(1));
+        ParsingUtils.parseLinkId(arguments.get(0));
+        ParsingUtils.parseMaxClicks(arguments.get(1));
     }
 
     @Override
