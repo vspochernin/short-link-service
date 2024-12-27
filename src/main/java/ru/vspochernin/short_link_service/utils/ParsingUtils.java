@@ -57,7 +57,7 @@ public class ParsingUtils {
     public static UUID parseUuid(String uuidStr) {
         try {
             return UUID.fromString(uuidStr);
-        } catch (IllegalArgumentException e) {
+        } catch (Exception e) {
             throw new ShortLinkServiceException("Некорректный UUID");
         }
     }
