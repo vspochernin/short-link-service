@@ -8,11 +8,11 @@ public record ConfigValues(
 {
 
     public static ConfigValues mergeWithConfigFile(int maxClicks, long expirationSeconds) {
-        if (ShortLinkContext.configValues.isEmpty()) {
+        if (ShortLinkContext.configFileValues.isEmpty()) {
             return new ConfigValues(maxClicks, expirationSeconds);
         }
 
-        ConfigValues configValuesFromFile = ShortLinkContext.configValues.get();
+        ConfigValues configValuesFromFile = ShortLinkContext.configFileValues.get();
         int maxClicksFromFile = configValuesFromFile.maxClicks;
         long expirationSecondsFromFile = configValuesFromFile.expirationSeconds;
 

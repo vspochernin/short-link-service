@@ -49,10 +49,10 @@ public class CreateCommandHandler implements CommandHandler {
 
         if (arguments.size() == 1) {
             ValidationUtils.validateLongUrlNotBlank(arguments.get(0));
-            if (ShortLinkContext.configValues.isEmpty()) {
+            if (ShortLinkContext.configFileValues.isEmpty()) {
                 throw new ShortLinkServiceException("Отсутствует конфигурационный файл");
             }
-            currentConfigValues = ShortLinkContext.configValues.get();
+            currentConfigValues = ShortLinkContext.configFileValues.get();
         } else if (arguments.size() == 3) {
             ValidationUtils.validateLongUrlNotBlank(arguments.get(0));
             int maxClicks = ValidationUtils.validateParseMaxClicks(arguments.get(1));

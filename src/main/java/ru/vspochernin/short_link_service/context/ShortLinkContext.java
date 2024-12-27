@@ -9,5 +9,5 @@ public class ShortLinkContext {
 
     public static boolean isRunning = true;
     public static Optional<User> currentUser = Optional.empty();
-    public static Optional<ConfigValues> configValues = Optional.empty();
+    public static Optional<ConfigValues> configFileValues = Optional.empty();
 }

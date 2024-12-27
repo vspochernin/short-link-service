@@ -23,7 +23,7 @@ public class SetConfigFileCommandHandler implements CommandHandler {
             throw new ShortLinkServiceException("Конфигурационный файл отсутствует или составлен некорректно");
         }
 
-        ShortLinkContext.configValues = configValues;
+        ShortLinkContext.configFileValues = configValues;
         System.out.println("Установлена следующая конфигурация: " + configValues.get());
     }
 
