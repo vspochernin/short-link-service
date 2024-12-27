@@ -20,6 +20,7 @@ public enum CommandType {
     SET_CONFIG_FILE("scf"),
     HELP("help"),
     CREATE("create"),
+    LIST("list"),
     ;
 
     public static final Map<String, CommandType> byCommandTypeStrMap = Arrays.stream(values())
