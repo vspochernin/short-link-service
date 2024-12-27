@@ -7,7 +7,6 @@ import java.util.UUID;
 
 import ru.vspochernin.short_link_service.context.ShortLinkContext;
 import ru.vspochernin.short_link_service.entity.User;
-import ru.vspochernin.short_link_service.utils.DebugLoggerUtils;
 
 public record Command(
         CommandType commandType,
@@ -32,8 +31,6 @@ public record Command(
         List<String> arguments = strParts.stream()
                 .skip(1)
                 .toList();
-
-        DebugLoggerUtils.logIfDebugEnabled("Считалась команда и аргументы: " + commandType + " " + arguments);
 
         return new Command(commandType, arguments);
     }
