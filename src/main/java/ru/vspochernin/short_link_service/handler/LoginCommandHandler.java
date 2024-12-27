@@ -1,7 +1,6 @@
 package ru.vspochernin.short_link_service.handler;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -26,7 +25,7 @@ public class LoginCommandHandler implements CommandHandler {
 
         if (userRepository.existsById(uuid)) {
             System.out.println("Добро пожаловать, " + uuid);
-            ShortLinkContext.currentUser = Optional.of(uuid);
+            ShortLinkContext.currentUser = userRepository.findById(uuid);
         } else {
             throw new ShortLinkServiceException("Пользователь " + uuid + " не существует");
         }

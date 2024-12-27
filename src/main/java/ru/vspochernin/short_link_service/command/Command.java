@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.util.UUID;
 
 import ru.vspochernin.short_link_service.context.ShortLinkContext;
+import ru.vspochernin.short_link_service.entity.User;
 import ru.vspochernin.short_link_service.utils.DebugLoggerUtils;
 
 public record Command(
@@ -39,6 +40,7 @@ public record Command(
 
     private static String getCurrentUserString() {
         return ShortLinkContext.currentUser
+                .map(User::getId)
                 .map(UUID::toString)
                 .orElse("неидентифицирован");
     }

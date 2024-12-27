@@ -8,8 +8,8 @@ CREATE TABLE links
     id                  SERIAL PRIMARY KEY,
     user_id             UUID         NOT NULL,
     long_url            VARCHAR(255) NOT NULL,
-    short_url           VARCHAR(31)  NOT NULL,
-    current_clicks      INTEGER      NOT NULL,
+    short_url           VARCHAR(31)  NOT NULL UNIQUE,
+    current_clicks      INTEGER      NOT NULL DEFAULT 0,
     max_clicks          INTEGER      NOT NULL,
     expiration_datetime TIMESTAMP    NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
