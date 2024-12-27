@@ -29,12 +29,14 @@ public class CommandLineInterface {
 
     public void run() {
         PrintUtils.printHelpMessage();
+
+        Command currentCommand;
         while (ShortLinkContext.isRunning) {
-            ShortLinkContext.currentCommand = Command.getNext();
+            currentCommand = Command.getNext();
             try {
-                Optional.ofNullable(commandHandlersMap.get(ShortLinkContext.currentCommand.commandType()))
+                Optional.ofNullable(commandHandlersMap.get(currentCommand.commandType()))
                         .orElse(commandHandlersMap.get(CommandType.UNKNOWN))
-                        .validateAndHandle(ShortLinkContext.currentCommand.arguments());
+                        .validateAndHandle(currentCommand.arguments());
             } catch (ShortLinkServiceException e) {
                 System.out.println("Ошибка: " + e.getMessage());
             }
