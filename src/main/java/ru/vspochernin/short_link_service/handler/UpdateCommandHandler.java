@@ -42,8 +42,6 @@ public class UpdateCommandHandler implements CommandHandler {
     public void validate(List<String> arguments) {
         ValidationUtils.validateIdentification();
         ValidationUtils.validateArgumentsCount(arguments, 2);
-        ParsingUtils.parseLinkId(arguments.get(0));
-        ParsingUtils.parseMaxClicks(arguments.get(1));
     }
 
     @Override
