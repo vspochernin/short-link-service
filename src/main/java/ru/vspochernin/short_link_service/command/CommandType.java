@@ -14,13 +14,15 @@ import lombok.Getter;
 public enum CommandType {
 
     UNKNOWN(""),
-    EXIT("exit"),
+    HELP("help"),
     REGISTER("register"),
     LOGIN("login"),
-    SET_CONFIG_FILE("scf"),
-    HELP("help"),
     CREATE("create"),
     LIST("list"),
+    UPDATE("update"),
+    DELETE("delete"),
+    SET_CONFIG_FILE("scf"),
+    EXIT("exit"),
     ;
 
     public static final Map<String, CommandType> byCommandTypeStrMap = Arrays.stream(values())

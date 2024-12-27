@@ -62,4 +62,20 @@ public class ValidationUtils {
             throw new ShortLinkServiceException("Некорректное время жизни ссылки в секундах");
         }
     }
+
+    public static int validateParseLinkId(String linkIdStr) {
+        if (linkIdStr == null || linkIdStr.isBlank()) {
+            throw new ShortLinkServiceException("id ссылки не должен быть пустым");
+        }
+
+        try {
+            int linkId = Integer.parseInt(linkIdStr);
+            if (linkId <= 0) {
+                throw new RuntimeException();
+            }
+            return linkId;
+        } catch (Exception e) {
+            throw new ShortLinkServiceException("Некорректный id ссылки");
+        }
+    }
 }
