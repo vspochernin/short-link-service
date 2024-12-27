@@ -38,6 +38,7 @@ public class ClickCommandHandler implements CommandHandler {
         } catch (IOException | URISyntaxException e) {
             throw new ShortLinkServiceException("Невозможно перейти по длинной ссылке");
         }
+
         link.incClicks();
         if (link.isClicksSpent()) {
             System.out.println("По ссылке совершено максимально возможное количество переходов, она будет удалена");
