@@ -11,13 +11,13 @@ public record ConfigValues(
         if (ShortLinkContext.configFileValues.isEmpty()) {
             return new ConfigValues(maxClicks, expirationSeconds);
         }
-
         ConfigValues configValuesFromFile = ShortLinkContext.configFileValues.get();
+
         int maxClicksFromFile = configValuesFromFile.maxClicks;
         long expirationSecondsFromFile = configValuesFromFile.expirationSeconds;
 
         return new ConfigValues(
                 Math.max(maxClicks, maxClicksFromFile),
-                Math.min(expirationSecondsFromFile, expirationSeconds));
+                Math.min(expirationSeconds, expirationSecondsFromFile));
     }
 }
