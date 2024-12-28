@@ -32,6 +32,7 @@ public class DeleteCommandHandler implements CommandHandler {
             throw new ShortLinkServiceException("У вас отсутствует ссылка с таким id");
         }
 
+        System.out.println("Ссылка будет удалена");
         linkRepository.delete(link);
     }
 

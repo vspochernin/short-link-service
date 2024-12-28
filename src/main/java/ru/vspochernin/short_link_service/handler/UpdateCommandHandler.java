@@ -35,6 +35,7 @@ public class UpdateCommandHandler implements CommandHandler {
         int newMaxClicks = ParsingUtils.parseMaxClicks(arguments.get(1));
         link.setMaxClicks(newMaxClicks);
 
+        System.out.println("Ссылка будет обновлена");
         linkRepository.save(link);
     }
 
