@@ -192,12 +192,15 @@
 	\caption{Запуск БД}
 \end{figure}
 
+Чтобы собрать проект при использовании \texttt{Maven} вручную, можно написать команду \texttt{mvn clean compile}.
+
 Чтобы запустить сам проект, можно либо сделать это в консоли с помощью \texttt{Maven}, написав команду
 \begin{verbatim}
 mvn exec:java -Dexec.mainClass=
 "ru.vspochernin.short_link_service.ShortLinkServiceApplication"
 \end{verbatim}
-Либо просто запустить \texttt{main()} метод из класса \texttt{ShortLinkServiceApplication} с помощью \texttt{IntelliJ IDEA}.
+Либо просто запустить \texttt{main()} метод из класса \texttt{ShortLinkServiceApplication} с помощью \texttt{IntelliJ IDEA} (идея при запуске проекта должна автоматически скачать все зависимости).
+
 
 После запуска кода, мы увидим приветственное сообщение с описанием всех команд, требованиям к конфигурационному файлу и параметрам.
 
