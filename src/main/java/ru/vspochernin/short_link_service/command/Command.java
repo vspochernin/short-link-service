@@ -18,7 +18,7 @@ public record Command(
 
     public static Command getNext() {
         System.out.println("------------------------");
-        System.out.print("Введите очередную команду [" + getCurrentUserString() + "]: ");
+        System.out.println("Введите очередную команду [" + getCurrentUserString() + "]:");
 
         String str = SCANNER.nextLine().trim();
         List<String> strParts = Arrays.stream(str.split(DELIMITER_REGEX))
