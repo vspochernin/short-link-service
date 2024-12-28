@@ -1,0 +1,117 @@
+\documentclass[a4paper, 14pt]{article}
+\usepackage[margin=2.25cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{minted}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{changepage}
+\usepackage{hyperref}
+\usepackage{cases}
+\usepackage{indentfirst}
+\usepackage{multirow}
+\usepackage{longtable}
+\pagestyle{plain}
+
+\hypersetup{
+	linkbordercolor = {1 1 1}
+}
+
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{tikz-timing}[2009/05/15]
+\usepackage{multicol}
+\usepackage[T2A]{fontenc}
+\usepackage{pgfplots}
+\usepackage{pgfgantt}
+
+\usepackage{listings}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}} % Текст заголовка.
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\renewcommand\labelenumi{\theenumi)}
+
+\usepackage[backend=biber]{biblatex}
+\addbibresource{mybib.bib}
+
+\def\Year{\expandafter\YEAR\the\year}
+\def\YEAR#1#2#3#4{#1#2#3#4}
+
+
+
+\begin{document}
+\lstset{
+	language=java,                 % Выбор языка для подсветки (здесь это java).
+	basicstyle=\small\sffamily,    % Размер и начертание шрифта для подсветки кода.
+	numbers=left,                  % Где поставить нумерацию строк (слева\справа).
+	numberstyle=\tiny,             % Размер шрифта для номеров строк.
+	stepnumber=1,                  % Размер шага между двумя номерами строк.
+	firstnumber=1,
+	numberfirstline=true
+	numbersep=5pt,                 % Как далеко отстоят номера строк от подсвечиваемого кода.
+	backgroundcolor=\color{white}, % Цвет фона подсветки - используем \usepackage{color}.
+	showspaces=false,              % Показывать или нет пробелы специальными отступами.
+	showstringspaces=false,        % Показывать или нет пробелы в строках.
+	showtabs=false,                % Показывать или нет табуляцию в строках.
+	frame=single,                  % Рисовать рамку вокруг кода.
+	tabsize=2,                     % Размер табуляции по умолчанию равен 2 пробелам.
+	captionpos=t,                  % Позиция заголовка вверху [t] или внизу [b].
+	breaklines=true,               % Автоматически переносить строки (да\нет).
+	breakatwhitespace=false,       % Переносить строки только если есть пробел.
+	escapeinside={\%*}{*)}         % Если нужно добавить комментарии в коде.
+}
+
+\begin{titlepage}
+	\center
+	МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ РОССИЙСКОЙ ФЕДЕРАЦИИ\linebreak
+	ФЕДЕРАЛЬНОЕ ГОСУДАРСТВЕННОЕ АВТОНОМНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ВЫСШЕГО ОБРАЗОВАНИЯ\linebreak
+	Национальный исследовательский ядерный университет <<МИФИ>> (НИЯУ МИФИ)
+	\noindent\rule{500pt}{0.8pt} \\
+	\textsc{\Large Институт интеллектуальных кибернетических систем}\\[8.5cm]
+
+	{ \huge \bfseries ОТЧЕТ ПО ИТОГОВОМУ ПРОЕКТУ	\\
+	\Large \mdseries СЕРВИС КОРОТКИХ ССЫЛОК \\
+	\large по дисциплине <<Программирование на языке Java>>}\\[7.0cm]
+
+
+	\begin{multicols}{2}
+		\begin{flushright} \large
+
+			{Выполнил студент группы: М24-535:}\\[0.5cm]
+
+			{Преподаватели:\\}
+
+		\end{flushright}
+		\begin{flushright}
+
+			{Почернин В. С.}\\[0.5cm]
+
+
+			Калин А.\\
+			Павлюк Г.
+
+		\end{flushright}
+	\end{multicols}
+
+	\flushright{
+		{\today}\\[0.5cm]
+	}
+	\centering{
+		Санкт-Петербург\\
+		\Year
+	}
+
+	\vfill
+\end{titlepage}
+
+\large
+\tableofcontents
+
+\newpage
+\section{Описание проекта}
+
+\newpage
+\section{Тестирование на соответствие критериям}
+
+
+\end{document}
