@@ -181,7 +181,7 @@
 \begin{itemize}
 	\item \texttt{Java 17} (полагаю, что версии выше также подойдут).
 	\item \texttt{Docker} (необходим для быстрого поднятия БД, но можно поднимать руками).
-	\item \texttt{Maven} (либо просто запускать проект в \texttt{IntelliJ IDEA}).
+	\item \texttt{Maven} (поддерживается в \texttt{IntelliJ IDEA}).
 \end{itemize}
 
 Запустим наш проект. Для начала, перейдем в директорию, содержащую конфигурационный файл докера - \texttt{/src/main/resources/db}, затем запустим базу данных в \texttt{detach} режиме командой \texttt{docker compose up -d}
@@ -192,17 +192,17 @@
 	\caption{Запуск БД}
 \end{figure}
 
-Чтобы собрать проект при использовании \texttt{Maven} вручную, можно написать команду \texttt{mvn clean compile}.
+Чтобы запустить проект, необходимо запустить \texttt{main()} метод из класса
 
-Чтобы запустить сам проект, можно либо сделать это в консоли с помощью \texttt{Maven}, написав команду
-\begin{verbatim}
-mvn exec:java -Dexec.mainClass=
-"ru.vspochernin.short_link_service.ShortLinkServiceApplication"
-\end{verbatim}
-Либо просто запустить \texttt{main()} метод из класса \texttt{ShortLinkServiceApplication} с помощью \texttt{IntelliJ IDEA} (идея при запуске проекта должна автоматически скачать все зависимости).
+\texttt{ShortLinkServiceApplication} с помощью \texttt{IntelliJ IDEA} (идея при запуске проекта должна автоматически скачать все зависимости с помощью Maven).
 
 
 После запуска кода, мы увидим приветственное сообщение с описанием всех команд, требованиям к конфигурационному файлу и параметрам.
+
+PS. Вероятно, это относится только к моему компьютеру, но я получал ошибку при запуске, пока не добавил в конфигурацию запуска запуска в VM Options
+
+
+\texttt{-Djava.rmi.server.hostname=localhost}
 
 
 \begin{figure}[H]
